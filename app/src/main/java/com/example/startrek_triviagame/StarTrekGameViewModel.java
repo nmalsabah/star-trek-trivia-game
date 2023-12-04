@@ -4,7 +4,10 @@ import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
+import androidx.lifecycle.Transformations;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,15 +21,15 @@ public class StarTrekGameViewModel extends AndroidViewModel {
     private final StarTrekGameRepository repository;
 
     private final LiveData<List<User>> allUsers;
-    //private LiveData<List<questions entity>> allQuestions;
-    //put last table entity here like allScores
+    private final LiveData<List<TriviaQuestions>> allTriviaQuestions;
+    private final LiveData<List<ScoreHistory>> allScores;
 
     public StarTrekGameViewModel(Application application) {
         super(application);
         repository = new StarTrekGameRepository(application);
         allUsers = repository.getAllUsers();
-        //allQuestions = repository.getAllQuestions();
-        //put last table entity here like allScores
+        allTriviaQuestions = repository.getAllTriviaQuestions();
+        allScores = repository.getAllScores();
     }
 
     public LiveData<List<User>> getAllUsers() {
@@ -41,39 +44,80 @@ public class StarTrekGameViewModel extends AndroidViewModel {
         return repository.getIsAdmin(isAdmin);
     }
 
-    //public LiveData<List<questions entity>> getAllQuestions() {
-    //    return allQuestions; }
+    public LiveData<List<TriviaQuestions>> getAllTriviaQuestions() {
+        return allTriviaQuestions; }
 
-    //public LiveData<List<scores entity>> getAllScores() {
-    //    return allScores; }
+    public LiveData<List<ScoreHistory>> getAllScores() {
+        return allScores; }
+
+    public LiveData<List<StarTrekGameItem>> getAllStarTrekGameItems() {
+        LiveData<List<StarTrekGameItem>> mergedLiveData = Transformations.map(
+                // Combine LiveData from different entities into StarTrekGameItem instances
+                new MediatorLiveData<List<StarTrekGameItem>>(),
+                input -> {
+                    // Use the input from all LiveData sources to create List<StarTrekGameItem>
+                    List<StarTrekGameItem> items = new ArrayList<>();
+
+                    List<User> users = allUsers.getValue();
+                    List<TriviaQuestions> triviaQuestions = allTriviaQuestions.getValue();
+                    List<ScoreHistory> scores = allScores.getValue();
+
+                    if (users != null) {
+                        for (User user : users) {
+                            items.add(StarTrekGameItem.createUserItem(user, items));
+                        }
+                    }
+
+                    if (triviaQuestions != null) {
+                        for (TriviaQuestions triviaQuestion : triviaQuestions) {
+                            items.add(StarTrekGameItem.createTriviaQuestionItem(triviaQuestion, items));
+                        }
+                    }
+
+                    if (scores != null) {
+                        for (ScoreHistory score : scores) {
+                            items.add(StarTrekGameItem.createScoreItem(score, items));
+                        }
+                    }
+
+                    return items;
+                }
+        );
+
+        return mergedLiveData;
+    }
+
+//    public void insertStarTrekGameItem(StarTrekGameItem starTrekGameItem) {
+//        repository.insertStarTrekGameItem(starTrekGameItem);
+//    }
 
     public void insertUser(User user) {
         repository.insertUser(user);
     }
 
-    //public void insertQuestions(questions entity) {
-    //    repository.insertQuestions(entity); }
+    public void insertTriviaQuestion(TriviaQuestions triviaQuestions) {
+        repository.insertTriviaQuestion(triviaQuestions); }
 
-    //public void insertScores(scores entity) {
-    //    repository.insertScores(entity); }
+    public void insertScores(ScoreHistory scoreHistory) {
+        repository.insertScore(scoreHistory); }
 
     public void updateUser(User user) {
         repository.updateUser(user);
     }
 
-    //public void updateQuestions(questions entity) {
-    //    repository.updateQuestions(entity); }
+    public void updateTriviaQuestion(TriviaQuestions triviaQuestions) {
+        repository.updateTriviaQuestion(triviaQuestions); }
 
-    //public void updateScores(scores entity) {
-    //    repository.updateScores(entity); }
+    public void updateScores(ScoreHistory scoreHistory) {
+        repository.updateScore(scoreHistory); }
 
     public void deleteUser(User user) {
         repository.deleteUser(user);
     }
 
-    //public void deleteQuestions(questions entity) {
-    //    repository.deleteQuestions(entity); }
+    public void deleteTriviaQuestion(TriviaQuestions triviaQuestions) {
+        repository.deleteTriviaQuestion(triviaQuestions); }
 
-    //public void deleteScores(scores entity) {
-    //    repository.deleteScores(entity); }
+    public void deleteScores(ScoreHistory scoreHistory) {
+        repository.deleteScore(scoreHistory); }
 }

@@ -17,15 +17,15 @@ public class StarTrekGameRepository {
     private final StarTrekGameDao mStarTrekGameDao;
 
     private final LiveData<List<User>> allUsers;
-    //private LiveData<List<questions entity>> allQuestions;
-    //put last table entity here like allScores
+    private final LiveData<List<TriviaQuestions>> allTriviaQuestions;
+    private final LiveData<List<ScoreHistory>> allScores;
 
     public StarTrekGameRepository(Application application) {
         StarTrekGameDatabase db = StarTrekGameDatabase.getDatabase(application);
         mStarTrekGameDao = db.starTrekGameDao();
         allUsers = mStarTrekGameDao.getAllUsers();
-        //allQuestions = mStarTrekGameDao.getAllQuestions();
-        //put last table entity here like allScores
+        allTriviaQuestions = mStarTrekGameDao.getAllTriviaQuestions();
+        allScores = mStarTrekGameDao.getAllScores();
     }
 
     public LiveData<List<User>> getAllUsers() {
@@ -40,57 +40,61 @@ public class StarTrekGameRepository {
         return mStarTrekGameDao.getIsAdmin(isAdmin);
     }
 
-    //public LiveData<List<questions entity>> getAllQuestions() {
-    //    return allQuestions; }
+    public LiveData<List<TriviaQuestions>> getAllTriviaQuestions() {
+        return allTriviaQuestions; }
 
-    //public LiveData<List<scores entity>> getAllScores() {
-    //    return allScores; }
+    public LiveData<List<ScoreHistory>> getAllScores() {
+        return allScores; }
 
     public void insertUser(User user) {
         StarTrekGameDatabase.databaseWriteExecutor.execute(() -> mStarTrekGameDao.insertUser(user));
     }
 
-    //public void insertQuestions(questions entity) {
-    //    StarTrekGameDatabase.databaseWriteExecutor.execute(() -> {
-    //        mStarTrekGameDao.insertQuestions(entity);
-    //    });
-    //}
+    public void insertTriviaQuestion(TriviaQuestions triviaQuestions) {
+        StarTrekGameDatabase.databaseWriteExecutor.execute(() -> {
+            mStarTrekGameDao.insertTriviaQuestion(triviaQuestions);
+        });
+    }
 
-    //public void insertScores(scores entity) {
-    //    StarTrekGameDatabase.databaseWriteExecutor.execute(() -> {
-    //        mStarTrekGameDao.insertScores(entity);
-    //    });
-    //}
+    public void insertScore(ScoreHistory scoreHistory) {
+        StarTrekGameDatabase.databaseWriteExecutor.execute(() -> {
+            mStarTrekGameDao.insertScore(scoreHistory);
+        });
+    }
 
     public void updateUser(User user) {
         StarTrekGameDatabase.databaseWriteExecutor.execute(() -> mStarTrekGameDao.updateUser(user));
     }
 
-    //public void updateQuestions(questions entity) {
-    //    StarTrekGameDatabase.databaseWriteExecutor.execute(() -> {
-    //        mStarTrekGameDao.updateQuestions(entity);
-    //    });
-    //}
+    public void updateTriviaQuestion(TriviaQuestions triviaQuestions) {
+        StarTrekGameDatabase.databaseWriteExecutor.execute(() -> {
+            mStarTrekGameDao.updateTriviaQuestion(triviaQuestions);
+        });
+    }
 
-    //public void updateScores(scores entity) {
-    //    StarTrekGameDatabase.databaseWriteExecutor.execute(() -> {
-    //        mStarTrekGameDao.updateScores(entity);
-    //    });
-    //}
+    public void updateScore(ScoreHistory scoreHistory) {
+        StarTrekGameDatabase.databaseWriteExecutor.execute(() -> {
+            mStarTrekGameDao.updateScore(scoreHistory);
+        });
+    }
 
     public void deleteUser(User user) {
         StarTrekGameDatabase.databaseWriteExecutor.execute(() -> mStarTrekGameDao.deleteUser(user));
     }
 
-    //public void deleteQuestions(questions entity) {
-    //    StarTrekGameDatabase.databaseWriteExecutor.execute(() -> {
-    //        mStarTrekGameDao.deleteQuestions(entity);
-    //    });
-    //}
+    public void deleteTriviaQuestion(TriviaQuestions triviaQuestions) {
+        StarTrekGameDatabase.databaseWriteExecutor.execute(() -> {
+            mStarTrekGameDao.deleteTriviaQuestion(triviaQuestions);
+        });
+    }
 
-    //public void deleteScores(scores entity) {
-    //    StarTrekGameDatabase.databaseWriteExecutor.execute(() -> {
-    //        mStarTrekGameDao.deleteScores(entity);
-    //    });
-    //}
+    public void deleteScore(ScoreHistory scoreHistory) {
+        StarTrekGameDatabase.databaseWriteExecutor.execute(() -> {
+            mStarTrekGameDao.deleteScore(scoreHistory);
+        });
+    }
+
+//    public void insertStarTrekGameItem(StarTrekGameItem starTrekGameItem) {
+//        StarTrekGameDatabase.databaseWriteExecutor.execute(() -> mStarTrekGameDao.insertStarTrekGameItem(starTrekGameItem));
+//    }
 }
