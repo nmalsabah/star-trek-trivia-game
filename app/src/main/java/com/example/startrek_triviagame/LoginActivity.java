@@ -2,6 +2,7 @@ package com.example.startrek_triviagame;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     private String password;
     private User user;
 
+    private SharedPreferences preferences;
+
 
     //tell Alex need to make sure the program is saving the user somewhere when logging in, making sure it is admin or not, the landing pages will load then
 
@@ -40,6 +43,21 @@ public class LoginActivity extends AppCompatActivity {
 
         getDatabase();
 
+        checkUser();
+
+        checkUserAndLaunchLandingPage();
+    }
+
+    private void checkUser() {
+        preferences = this.getSharedPreferences("com.example.startrek_triviagame", MODE_PRIVATE);
+
+        int userId = preferences.getInt("userId", -1);
+
+        if (userId < 0) {
+            return;
+        }
+
+        user = starTrekGameDao.getUserId(userId);
     }
 
 
@@ -73,6 +91,7 @@ public class LoginActivity extends AppCompatActivity {
 //                            boolean isAdmin = user.getIsAdmin();
 ////                            Intent intent = intentFactory(LoginActivity.this, userId, isAdmin);
 ////                            startActivity(intent);
+                            preferences.edit().putInt("userId", user.getUserId()).apply();
                             checkUserAndLaunchLandingPage();
                         } else {
                             Toast.makeText(LoginActivity.this, "Unexpected error: User object is null", Toast.LENGTH_SHORT).show();
@@ -124,7 +143,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void checkUserAndLaunchLandingPage() {
         if (user == null) {
-            Toast.makeText(this, "User object is null", Toast.LENGTH_SHORT).show();
             return;
         }
 
