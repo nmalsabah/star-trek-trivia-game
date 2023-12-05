@@ -29,31 +29,31 @@ public interface StarTrekGameDao {
     void deleteUser(User user);
 
     @Query("SELECT * FROM UserInformation WHERE UserId = :userId")
-    LiveData<User> getUserId(int userId);
+    User getUserId(int userId);
 
     @Query("SELECT * FROM UserInformation WHERE UserName = :userName")
     User getUserName(String userName);
 
     @Query("SELECT * FROM UserInformation WHERE Password = :password")
-    LiveData<User> getPassword(String password);
+    User getPassword(String password);
 
     @Query("SELECT * FROM UserInformation WHERE IsAdmin = :isAdmin")
-    LiveData<List<User>> getIsAdmin(boolean isAdmin);
+    User getIsAdmin(boolean isAdmin);
 
     @Query("SELECT * FROM UserInformation")
     LiveData<List<User>> getAllUsers();
 
     @Query("SELECT * FROM UserInformation WHERE UserName = :userName AND Password = :password")
-    LiveData<User> getUserNameAndPassword(String userName, String password);
+    User getUserNameAndPassword(String userName, String password);
 
     @Query("SELECT * FROM UserInformation WHERE UserName = :userName AND Password = :password AND IsAdmin = :isAdmin")
-    LiveData<User> getUserNameAndPasswordAndAdminStatus(String userName, String password, boolean isAdmin);
+    User getUserNameAndPasswordAndAdminStatus(String userName, String password, boolean isAdmin);
 
     @Query("SELECT * FROM UserInformation WHERE UserName = :userName AND IsAdmin = :isAdmin")
-    LiveData<User> getUserNameAndAdminStatus(String userName, boolean isAdmin);
+    User getUserNameAndAdminStatus(String userName, boolean isAdmin);
 
     @Query("SELECT * FROM UserInformation WHERE Password = :password AND IsAdmin = :isAdmin")
-    LiveData<User> getPasswordAndAdminStatus(String password, boolean isAdmin);
+    User getPasswordAndAdminStatus(String password, boolean isAdmin);
 
     // TriviaQuestions queries
     @Insert
@@ -66,13 +66,13 @@ public interface StarTrekGameDao {
     void deleteTriviaQuestion(TriviaQuestions triviaQuestions);
 
     @Query("SELECT * FROM TriviaQuestions")
-    LiveData<List<TriviaQuestions>> getAllTriviaQuestions();
+    List<TriviaQuestions> getAllTriviaQuestions();
 
     @Query("SELECT * FROM TriviaQuestions WHERE TriviaQuestionId = :triviaQuestionId")
-    LiveData<TriviaQuestions> getTriviaQuestionId(int triviaQuestionId);
+    TriviaQuestions getTriviaQuestionId(int triviaQuestionId);
 
     @Query("SELECT * FROM TriviaQuestions WHERE TriviaQuestion = :triviaQuestion")
-    LiveData<TriviaQuestions> getTriviaQuestion(String triviaQuestion);
+    TriviaQuestions getTriviaQuestion(String triviaQuestion);
 
     // ScoreHistory queries
     @Insert
@@ -88,14 +88,11 @@ public interface StarTrekGameDao {
     LiveData<List<ScoreHistory>> getAllScores();
 
     @Query("SELECT * FROM ScoreHistory WHERE ScoreId = :scoreId")
-    LiveData<ScoreHistory> getScoreId(int scoreId);
+    ScoreHistory getScoreId(int scoreId);
 
     @Query("SELECT * FROM ScoreHistory WHERE IsCorrectAnswer = :isCorrectAnswer")
-    LiveData<ScoreHistory> getIsCorrectAnswer(String isCorrectAnswer);
+    ScoreHistory getIsCorrectAnswer(String isCorrectAnswer);
 
     @Query("SELECT * FROM ScoreHistory WHERE Score = :score")
-    LiveData<ScoreHistory> getScore(String score);
-
-//    @Insert
-//    void insertStarTrekGameItem(StarTrekGameItem starTrekGameItem);
+    ScoreHistory getScore(String score);
 }

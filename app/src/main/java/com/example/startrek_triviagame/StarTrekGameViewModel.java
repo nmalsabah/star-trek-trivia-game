@@ -21,7 +21,7 @@ public class StarTrekGameViewModel extends AndroidViewModel {
     private final StarTrekGameRepository repository;
 
     private final LiveData<List<User>> allUsers;
-    private final LiveData<List<TriviaQuestions>> allTriviaQuestions;
+    private final List<TriviaQuestions> allTriviaQuestions;
     private final LiveData<List<ScoreHistory>> allScores;
 
     public StarTrekGameViewModel(Application application) {
@@ -36,15 +36,15 @@ public class StarTrekGameViewModel extends AndroidViewModel {
         return allUsers;
     }
 
-    public LiveData<User> getUserId(int userId) {
+    public User getUserId(int userId) {
         return repository.getUserId(userId);
     }
 
-    public LiveData<List<User>> getIsAdmin(boolean isAdmin) {
+    public User getIsAdmin(boolean isAdmin) {
         return repository.getIsAdmin(isAdmin);
     }
 
-    public LiveData<List<TriviaQuestions>> getAllTriviaQuestions() {
+    public List<TriviaQuestions> getAllTriviaQuestions() {
         return allTriviaQuestions; }
 
     public LiveData<List<ScoreHistory>> getAllScores() {
@@ -59,7 +59,7 @@ public class StarTrekGameViewModel extends AndroidViewModel {
                     List<StarTrekGameItem> items = new ArrayList<>();
 
                     List<User> users = allUsers.getValue();
-                    List<TriviaQuestions> triviaQuestions = allTriviaQuestions.getValue();
+                    List<TriviaQuestions> triviaQuestions = allTriviaQuestions;
                     List<ScoreHistory> scores = allScores.getValue();
 
                     if (users != null) {
