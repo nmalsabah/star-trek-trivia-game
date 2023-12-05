@@ -4,7 +4,7 @@
 Welcome to the Star Trek Trivia Game, an Android app designed for the CST 338 Software Design class. This trivia game is created to test your knowledge of the Star Trek universe, covering various series.
 
 ## Features
-- **Trivia Questions:** The game includes 10 trivia questions, covering characters, episodes, ships, and quotes from different Star Trek series.
+- **Trivia Questions:** The game includes 5 trivia questions, covering characters, episodes, ships, and quotes from different Star Trek series.
 
 - **Score Tracking:** The app keeps track of your score from the last game played.
 
@@ -12,7 +12,7 @@ Welcome to the Star Trek Trivia Game, an Android app designed for the CST 338 So
 
 - **User Accounts:** Create a personalized account to view your score.
 
-- **Admin Account:** Login into an admin account to remove/add users and reset user scores.
+- **Admin Account:** Login into an admin account to remove, add, and update users.
 
 ## How to Play
 1. **Launch the App:** Open the project in Android Studio, connect your Android device or use an emulator, build and run the app.
