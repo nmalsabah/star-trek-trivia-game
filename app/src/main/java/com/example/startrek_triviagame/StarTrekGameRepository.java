@@ -17,7 +17,7 @@ public class StarTrekGameRepository {
     private final StarTrekGameDao mStarTrekGameDao;
 
     private final LiveData<List<User>> allUsers;
-    private final LiveData<List<TriviaQuestions>> allTriviaQuestions;
+    private final List<TriviaQuestions> allTriviaQuestions;
     private final LiveData<List<ScoreHistory>> allScores;
 
     public StarTrekGameRepository(Application application) {
@@ -32,15 +32,15 @@ public class StarTrekGameRepository {
         return allUsers;
     }
 
-    public LiveData<User> getUserId(int userId) {
+    public User getUserId(int userId) {
         return mStarTrekGameDao.getUserId(userId);
     }
 
-    public LiveData<List<User>> getIsAdmin(boolean isAdmin) {
+    public User getIsAdmin(boolean isAdmin) {
         return mStarTrekGameDao.getIsAdmin(isAdmin);
     }
 
-    public LiveData<List<TriviaQuestions>> getAllTriviaQuestions() {
+    public List<TriviaQuestions> getAllTriviaQuestions() {
         return allTriviaQuestions; }
 
     public LiveData<List<ScoreHistory>> getAllScores() {

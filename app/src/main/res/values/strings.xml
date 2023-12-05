@@ -10,4 +10,11 @@
     <string name="empty_not_saved">User not saved because it is empty</string>
     <string name="hint_word" >User</string>
     <string name="button_save" >Save</string>
+    <string name="greetings_admin">Greetings admin2!</string>
+    <string name="play_game">Play Game</string>
+    <string name="logout">Logout</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="view_scores">View Scores</string>
+    <string name="admin_tasks">Admin Tasks</string>
+    <string name="greetings_user">Greetings testuser1!</string>
 </resources>

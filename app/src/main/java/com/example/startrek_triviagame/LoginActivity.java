@@ -21,12 +21,15 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editUserName;
     private EditText editPassword;
     private Button loginButton;
+    //private Button logoutButton;
     //private Button registerButton;
     private StarTrekGameDao starTrekGameDao;
     private String userName;
     private String password;
     private User user;
 
+
+    //tell Alex need to make sure the program is saving the user somewhere when logging in, making sure it is admin or not, the landing pages will load then
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         wireUpDisplay();
 
         getDatabase();
+
     }
 
 
@@ -59,14 +63,36 @@ public class LoginActivity extends AppCompatActivity {
                     if (validatePassword()) {
                         Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
 
-//                        Intent intent = MainActivity.intentFactory(getApplicationContext(), user.getUserId());
-//                        startActivity(intent);
+                        //getIntent().putExtra("userId", user.getUserId());
+
+//                      Intent intent = MainActivity.intentFactory(getApplicationContext(), user.getUserId());
+//                      startActivity(intent);
+
+                        if (user != null) {
+//                            int userId = user.getUserId();
+//                            boolean isAdmin = user.getIsAdmin();
+////                            Intent intent = intentFactory(LoginActivity.this, userId, isAdmin);
+////                            startActivity(intent);
+                            checkUserAndLaunchLandingPage();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Unexpected error: User object is null", Toast.LENGTH_SHORT).show();
+                        }
                     } else {
                         Toast.makeText(LoginActivity.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
                     }
                 }
+                //user = null;
             }
         });
+
+//        logoutButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(LoginActivity.this, "Logout Successful!", Toast.LENGTH_SHORT).show();
+//                getIntent().putExtra("userId", -1);
+//                //startLoginActivity();
+//            }
+//        });
 
         /*registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +122,37 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
-    public static Intent intentFactory(Context context) {
-        return new Intent(context, LoginActivity.class);
+    private void checkUserAndLaunchLandingPage() {
+        if (user == null) {
+            Toast.makeText(this, "User object is null", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Determine user type and launch landing page
+        if (user.getIsAdmin()) {
+            launchAdminLandingPageActivity();
+        } else {
+            launchUserLandingPageActivity();
+        }
     }
+
+    private void launchAdminLandingPageActivity() {
+        Intent intent = new Intent(this, AdminLandingPageActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void launchUserLandingPageActivity() {
+        Intent intent = new Intent(this, UserLandingPageActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+//    public static Intent intentFactory(Context context, int userId, boolean isAdmin) {
+//        Intent intent = new Intent(context, MainActivity.class);
+//        intent.putExtra("userId", userId);
+//        intent.putExtra("isAdmin", isAdmin);
+//        return intent;
+//        //return new Intent(context, LoginActivity.class);
+//    }
 }

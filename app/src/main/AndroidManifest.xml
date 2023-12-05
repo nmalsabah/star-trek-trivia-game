@@ -23,6 +23,12 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".UserLandingPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminLandingPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

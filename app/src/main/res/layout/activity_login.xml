@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activityLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".LoginActivity">
 
     <EditText
         android:id="@+id/userNameTextView"
@@ -18,12 +20,18 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:hint="@string/enter_your_password"
-        android:inputType="text" />
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/loginButton" />
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up" />
 
 </LinearLayout>
