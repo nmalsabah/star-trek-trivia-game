@@ -20,9 +20,10 @@ public class StarTrekGameViewModel extends AndroidViewModel {
 
     private final StarTrekGameRepository repository;
 
-    private final LiveData<List<User>> allUsers;
+    private final List<User> allUsers;
     private final List<TriviaQuestions> allTriviaQuestions;
     private final LiveData<List<ScoreHistory>> allScores;
+    private StarTrekGameDao starTrekGameDao;
 
     public StarTrekGameViewModel(Application application) {
         super(application);
@@ -32,7 +33,7 @@ public class StarTrekGameViewModel extends AndroidViewModel {
         allScores = repository.getAllScores();
     }
 
-    public LiveData<List<User>> getAllUsers() {
+    public List<User> getAllUsers() {
         return allUsers;
     }
 
@@ -58,7 +59,7 @@ public class StarTrekGameViewModel extends AndroidViewModel {
                     // Use the input from all LiveData sources to create List<StarTrekGameItem>
                     List<StarTrekGameItem> items = new ArrayList<>();
 
-                    List<User> users = allUsers.getValue();
+                    List<User> users = starTrekGameDao.getAllUsers();
                     List<TriviaQuestions> triviaQuestions = allTriviaQuestions;
                     List<ScoreHistory> scores = allScores.getValue();
 

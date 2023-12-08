@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
 //    public static final int NEW_GAME_ACTIVITY_REQUEST_CODE = 1;
 //    private StarTrekGameViewModel viewModel;
-    //private StarTrekGameListAdapter adapter;
+//    private StarTrekGameListAdapter adapter;
     private StarTrekGameDao starTrekGameDao;
 
     private SharedPreferences preferences;
@@ -67,16 +67,14 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 //        List<User> users = (List<User>) starTrekGameDao.getAllUsers();
-        StarTrekGameViewModel mStarTrekViewModel = new StarTrekGameViewModel(this.getApplication());
-        mStarTrekViewModel.getAllUsers().observe(this, users -> {
-            if (users.size() <= 0) {
-                User testUser = new User("testuser1", "testuser1", false);
-                User adminUser = new User("admin2", "admin2", true);
-                starTrekGameDao.insertUser(testUser);
-                starTrekGameDao.insertUser(adminUser);
-            }
-        });
-
+//        StarTrekGameViewModel mStarTrekViewModel = new StarTrekGameViewModel(this.getApplication());
+        List<User> users = starTrekGameDao.getAllUsers();
+        if (users.size() <= 0) {
+            User testUser = new User("testuser1", "testuser1", false);
+            User adminUser = new User("admin2", "admin2", true);
+            starTrekGameDao.insertUser(testUser);
+            starTrekGameDao.insertUser(adminUser);
+        }
 
 //        Intent intent = LoginActivity.intentFactory(this, userId, isAdmin);
 //        startActivity(intent);
