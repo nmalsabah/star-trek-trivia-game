@@ -23,6 +23,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".RegisterActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib.name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".UserLandingPageActivity"
             android:exported="false" />
         <activity

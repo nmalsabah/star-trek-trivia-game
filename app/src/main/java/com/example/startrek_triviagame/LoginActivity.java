@@ -130,12 +130,14 @@ public class LoginActivity extends AppCompatActivity {
 
     private void launchAdminLandingPageActivity() {
         Intent intent = new Intent(this, AdminLandingPageActivity.class);
+        intent.putExtra("username", user.getUserName());
         startActivity(intent);
         finish();
     }
 
     private void launchUserLandingPageActivity() {
         Intent intent = new Intent(this, UserLandingPageActivity.class);
+        intent.putExtra("username", user.getUserName());
         startActivity(intent);
         finish();
     }

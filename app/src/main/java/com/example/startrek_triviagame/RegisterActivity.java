@@ -15,6 +15,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText editUserName;
     private EditText editPassword;
     private Button registerButton;
+    private Button cancelButton;
     private StarTrekGameDao starTrekGameDao;
     private String userName;
     private String password;
@@ -37,6 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         editUserName = findViewById(R.id.registerUserNameTextView);
         editPassword = findViewById(R.id.registerPasswordTextView);
         registerButton = findViewById(R.id.registerButton);
+        cancelButton = findViewById(R.id.cancelButton);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +55,13 @@ public class RegisterActivity extends AppCompatActivity {
                         finish(); // Finish the RegisterActivity and go back to LoginActivity
                     }
                 }
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Finish the RegisterActivity and go back to LoginActivity
             }
         });
     }

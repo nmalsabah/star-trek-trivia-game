@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,10 @@ public class UserLandingPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_landing_page);
 
         preferences = this.getSharedPreferences("com.example.startrek_triviagame", MODE_PRIVATE);
+
+        String username = getIntent().getStringExtra("username");
+        TextView greetingsTextView = findViewById(R.id.user_label_textview);
+        greetingsTextView.setText("Greetings, " + username + "!");
 
         // Initialize UI elements
         Button playGameButton = findViewById(R.id.user_play_game_button);
