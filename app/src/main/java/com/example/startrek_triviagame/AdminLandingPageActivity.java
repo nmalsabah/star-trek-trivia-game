@@ -35,7 +35,9 @@ public class AdminLandingPageActivity extends AppCompatActivity {
         playGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int userId = getIntent().getIntExtra("userId", -1);
 
+                startTriviaGameActivity(userId);
             }
         });
 
@@ -65,6 +67,12 @@ public class AdminLandingPageActivity extends AppCompatActivity {
 
     private void startLoginActivity() {
         Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    private void startTriviaGameActivity(int userId) {
+        Intent intent = new Intent(AdminLandingPageActivity.this, TriviaGameActivity.class);
+        intent.putExtra("userId", userId);
         startActivity(intent);
     }
 }

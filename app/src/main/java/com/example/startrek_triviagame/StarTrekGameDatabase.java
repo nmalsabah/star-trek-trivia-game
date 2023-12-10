@@ -17,7 +17,7 @@ import java.util.concurrent.Executors;
  * @author Nicole Al-Sabah
  * Date: December 01, 2023
  */
-@Database(entities = {User.class, TriviaQuestions.class, ScoreHistory.class}, version = 2, exportSchema = false)
+@Database(entities = {User.class, TriviaQuestions.class, ScoreHistory.class}, version = 3, exportSchema = false)
 public abstract class StarTrekGameDatabase extends RoomDatabase {
     public static final String DATABASE_NAME = "StarTrekGameDatabase";
 

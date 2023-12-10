@@ -3,7 +3,11 @@ package com.example.startrek_triviagame;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * This file represents the TriviaQuestions table.
@@ -26,9 +30,35 @@ public class TriviaQuestions {
     @ColumnInfo(name = "DifficultyLevel")
     private String difficultyLevel;
 
-    public TriviaQuestions(@NonNull String triviaQuestion,@NonNull String difficultyLevel) {
+    @NonNull
+    @ColumnInfo(name = "AnswerOne")
+    private String answerOne;
+
+    @NonNull
+    @ColumnInfo(name = "AnswerTwo")
+    private String answerTwo;
+
+    @NonNull
+    @ColumnInfo(name = "AnswerThree")
+    private String answerThree;
+
+    @NonNull
+    @ColumnInfo(name = "AnswerFour")
+    private String answerFour;
+
+    @Ignore
+    private List<String> triviaAnswers;
+
+    public TriviaQuestions(@NonNull String triviaQuestion,@NonNull String difficultyLevel,
+                           @NonNull String answerOne, @NonNull String answerTwo,
+                           @NonNull String answerThree, @NonNull String answerFour) {
         this.triviaQuestion = triviaQuestion;
         this.difficultyLevel = difficultyLevel;
+        this.answerOne = answerOne;
+        this.answerTwo = answerTwo;
+        this.answerThree = answerThree;
+        this.answerFour = answerFour;
+        this.triviaAnswers = Arrays.asList(answerOne, answerTwo, answerThree, answerFour);
     }
 
     public int getTriviaQuestionId() {
@@ -55,5 +85,68 @@ public class TriviaQuestions {
 
     public void setDifficultyLevel(@NonNull String difficultyLevel) {
         this.difficultyLevel = difficultyLevel;
+    }
+
+    @NonNull
+    public String getAnswerOne() {
+        return answerOne;
+    }
+
+    public void setAnswerOne(@NonNull String answerOne) {
+        this.answerOne = answerOne;
+    }
+
+    @NonNull
+    public String getAnswerTwo() {
+        return answerTwo;
+    }
+
+    public void setAnswerTwo(@NonNull String answerTwo) {
+        this.answerTwo = answerTwo;
+    }
+
+    @NonNull
+    public String getAnswerThree() {
+        return answerThree;
+    }
+
+    public void setAnswerThree(@NonNull String answerThree) {
+        this.answerThree = answerThree;
+    }
+
+    @NonNull
+    public String getAnswerFour() {
+        return answerFour;
+    }
+
+    public void setAnswerFour(@NonNull String answerFour) {
+        this.answerFour = answerFour;
+    }
+
+    public List<String> getTriviaAnswers() {
+        return triviaAnswers;
+    }
+
+    public void setTriviaAnswers(List<String> triviaAnswers) {
+        this.triviaAnswers = triviaAnswers;
+    }
+
+    public int getTriviaAnswer(int j) {
+        int triviaAnswer = 0;
+        switch (j) {
+            case 0:
+                triviaAnswer = 1;
+                break;
+            case 1:
+                triviaAnswer = 2;
+                break;
+            case 2:
+                triviaAnswer = 3;
+                break;
+            case 3:
+                triviaAnswer = 4;
+                break;
+        }
+        return triviaAnswer;
     }
 }

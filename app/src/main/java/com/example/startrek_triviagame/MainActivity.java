@@ -19,11 +19,10 @@ public class MainActivity extends AppCompatActivity {
 //    private StarTrekGameViewModel viewModel;
 //    private StarTrekGameListAdapter adapter;
     private StarTrekGameDao starTrekGameDao;
-
     private SharedPreferences preferences;
     private int userId;
-
     private boolean isAdmin;
+    private String triviaQuestions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
 //        Intent intent = LoginActivity.intentFactory(this, userId, isAdmin);
 //        startActivity(intent);
     }
-
 }
 
 
