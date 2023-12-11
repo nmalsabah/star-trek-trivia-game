@@ -1,5 +1,7 @@
 package com.example.startrek_triviagame;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -7,6 +9,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 /**
@@ -41,7 +44,7 @@ public interface StarTrekGameDao {
     User getIsAdmin(boolean isAdmin);
 
     @Query("SELECT * FROM UserInformation")
-    LiveData<List<User>> getAllUsers();
+    List<User> getAllUsers();
 
     @Query("SELECT * FROM UserInformation WHERE UserName = :userName AND Password = :password")
     User getUserNameAndPassword(String userName, String password);
@@ -94,5 +97,5 @@ public interface StarTrekGameDao {
     ScoreHistory getIsCorrectAnswer(String isCorrectAnswer);
 
     @Query("SELECT * FROM ScoreHistory WHERE Score = :score")
-    ScoreHistory getScore(String score);
+    LiveData<ScoreHistory> getScore(String score);
 }

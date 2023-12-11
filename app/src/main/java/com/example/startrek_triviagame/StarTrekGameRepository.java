@@ -16,7 +16,7 @@ public class StarTrekGameRepository {
 
     private final StarTrekGameDao mStarTrekGameDao;
 
-    private final LiveData<List<User>> allUsers;
+    private final List<User> allUsers;
     private final List<TriviaQuestions> allTriviaQuestions;
     private final LiveData<List<ScoreHistory>> allScores;
 
@@ -28,7 +28,7 @@ public class StarTrekGameRepository {
         allScores = mStarTrekGameDao.getAllScores();
     }
 
-    public LiveData<List<User>> getAllUsers() {
+    public List<User> getAllUsers() {
         return allUsers;
     }
 

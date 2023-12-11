@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TriviaGameActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/triviaGameTitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/starrenegades_jr9va"
+            android:gravity="center"
+            android:text="@string/welcome_to_the_star_trek_trivia_game"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/questionOneTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/what_is_picard_s_favorite_beverage_to_order_from_the_replicator"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/questionOneRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/questionOneRadioButtonOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/coffee_black" />
+
+            <RadioButton
+                android:id="@+id/questionOneRadioButtonTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tea_earl_grey_hot" />
+
+            <RadioButton
+                android:id="@+id/questionOneRadioButtonThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/raktajino" />
+
+            <RadioButton
+                android:id="@+id/questionOneRadioButtonFour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/romulan_ale" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/questionTwoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/what_is_the_klingon_homeworld_called"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/questionTwoRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/questionTwoRadioButtonOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cardassia_prime" />
+
+            <RadioButton
+                android:id="@+id/questionTwoRadioButtonTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/kronos" />
+
+            <RadioButton
+                android:id="@+id/questionTwoRadioButtonThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/qo_nos" />
+
+            <RadioButton
+                android:id="@+id/questionTwoRadioButtonFour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/romulus" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/questionThreeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/what_is_the_name_of_the_fictional_substance_that_powers_federation_starships"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/questionThreeRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/questionThreeRadioButtonOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dilithium" />
+
+            <RadioButton
+                android:id="@+id/questionThreeRadioButtonTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tritanium" />
+
+            <RadioButton
+                android:id="@+id/questionThreeRadioButtonThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/unobtanium" />
+
+            <RadioButton
+                android:id="@+id/questionThreeRadioButtonFour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quantumium" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/questionFourTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/what_is_the_iconic_phrase_that_borgs_often_say_when_assimilating_other_species"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/questionFourRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/questionFourRadioButtonOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/we_are_the_collective" />
+
+            <RadioButton
+                android:id="@+id/questionFourRadioButtonTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/we_are_the_borg" />
+
+            <RadioButton
+                android:id="@+id/questionFourRadioButtonThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/you_will_be_assimilated" />
+
+            <RadioButton
+                android:id="@+id/questionFourRadioButtonFour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/resistance_is_futile" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/questionFiveTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/what_is_the_currency_used_by_ferengis_often_referred_to_as_the_currency_of_the_galaxy"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/questionFiveRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/questionFiveRadioButtonOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/credits" />
+
+            <RadioButton
+                android:id="@+id/questionFiveRadioButtonTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gold_pressed_latinium" />
+
+            <RadioButton
+                android:id="@+id/questionFiveRadioButtonThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quatloos" />
+
+            <RadioButton
+                android:id="@+id/questionFiveRadioButtonFour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/zek_dollars" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/submitAnswersButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/starrenegades_jr9va"
+            android:text="@string/make_it_so"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+</ScrollView>

@@ -3,6 +3,7 @@ package com.example.startrek_triviagame;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 /**
@@ -11,14 +12,17 @@ import androidx.room.PrimaryKey;
  * @author Nicole Al-Sabah
  * Date: December 03, 2023
  */
-@Entity(tableName = "ScoreHistory")
+@Entity(
+        tableName = "ScoreHistory", foreignKeys = @ForeignKey(entity = User.class,
+        parentColumns = "UserId", childColumns = "UserId", onDelete = ForeignKey.CASCADE))
 public class ScoreHistory {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "ScoreId")
     private int scoreId;
 
-    //Do I have to do a foreign key here?
+    @ColumnInfo(name = "UserId")
+    private int userId;
 
     @NonNull
     @ColumnInfo(name = "EffectiveDate")
@@ -32,7 +36,8 @@ public class ScoreHistory {
     @ColumnInfo(name = "Score")
     private String score;
 
-    public ScoreHistory(@NonNull String effectiveDate,@NonNull String isCorrectAnswer, @NonNull String score) {
+    public ScoreHistory(@NonNull String effectiveDate,@NonNull String isCorrectAnswer, @NonNull String score, @NonNull int userId) {
+        this.userId = userId;
         this.effectiveDate = effectiveDate;
         this.isCorrectAnswer = isCorrectAnswer;
         this.score = score;
@@ -71,5 +76,13 @@ public class ScoreHistory {
 
     public void setScore(@NonNull String score) {
         this.score = score;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }
