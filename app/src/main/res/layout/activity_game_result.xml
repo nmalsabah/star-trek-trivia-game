@@ -14,7 +14,7 @@
         android:fontFamily="@font/starrenegades_jr9va"
         android:gravity="center"
         android:text="@string/you_win"
-        android:textSize="40sp"
+        android:textSize="45sp"
         android:textStyle="bold" />
 
     <TextView
@@ -24,6 +24,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="@string/your_score_is_0"
+        android:fontFamily="@font/starrenegades_jr9va"
         android:textSize="30sp" />
 
     <Button
