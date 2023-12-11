@@ -20,6 +20,7 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_result);
 
+        starTrekGameDao = StarTrekGameDatabase.getDatabase(getApplicationContext()).starTrekGameDao();
         preferences = this.getSharedPreferences("com.example.startrek_triviagame", MODE_PRIVATE);
 
         int userScore = getIntent().getIntExtra("userScore", 0);
@@ -36,7 +37,7 @@ public class ResultActivity extends AppCompatActivity {
         Button exitButton = findViewById(R.id.exitButton);
 
         playAgainButton.setOnClickListener(v -> {
-            int userId = getIntent().getIntExtra("userId", -1);
+            int userId = preferences.getInt("userId", -1);
             boolean isAdmin = getIntent().getBooleanExtra("isAdmin", false);
 
             startTriviaGameActivity(userId, isAdmin);
@@ -63,6 +64,7 @@ public class ResultActivity extends AppCompatActivity {
         } else {
             intent = new Intent(ResultActivity.this, TriviaGameActivity.class);
             intent.putExtra("userId", userId);
+            intent.putExtra("username", getIntent().getStringExtra("username"));
         }
 
         startActivity(intent);

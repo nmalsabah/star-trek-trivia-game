@@ -13,16 +13,16 @@ import androidx.room.PrimaryKey;
  * Date: December 03, 2023
  */
 @Entity(
-        tableName = "ScoreHistory", foreignKeys = @ForeignKey(entity = TriviaQuestions.class,
-        parentColumns = "TriviaQuestionId", childColumns = "TriviaQuestionsId", onDelete = ForeignKey.CASCADE))
+        tableName = "ScoreHistory", foreignKeys = @ForeignKey(entity = User.class,
+        parentColumns = "UserId", childColumns = "UserId", onDelete = ForeignKey.CASCADE))
 public class ScoreHistory {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "ScoreId")
     private int scoreId;
 
-    @ColumnInfo(name = "TriviaQuestionsId")
-    private int triviaQuestionsId;
+    @ColumnInfo(name = "UserId")
+    private int userId;
 
     @NonNull
     @ColumnInfo(name = "EffectiveDate")
@@ -36,8 +36,8 @@ public class ScoreHistory {
     @ColumnInfo(name = "Score")
     private String score;
 
-    public ScoreHistory(@NonNull String effectiveDate,@NonNull String isCorrectAnswer, @NonNull String score) {
-        this.triviaQuestionsId = triviaQuestionsId;
+    public ScoreHistory(@NonNull String effectiveDate,@NonNull String isCorrectAnswer, @NonNull String score, @NonNull int userId) {
+        this.userId = userId;
         this.effectiveDate = effectiveDate;
         this.isCorrectAnswer = isCorrectAnswer;
         this.score = score;
@@ -78,11 +78,11 @@ public class ScoreHistory {
         this.score = score;
     }
 
-    public int getTriviaQuestionsId() {
-        return triviaQuestionsId;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setTriviaQuestionsId(int triviaQuestionsId) {
-        this.triviaQuestionsId = triviaQuestionsId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

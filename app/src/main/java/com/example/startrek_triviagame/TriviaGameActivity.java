@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class TriviaGameActivity extends AppCompatActivity {
@@ -62,9 +61,17 @@ public class TriviaGameActivity extends AppCompatActivity {
                     }
                 }
                 String score = String.valueOf(userScore);
-                ScoreHistory scoreHistory = new ScoreHistory("2020-12-03", "Yes", score);
-                // this line is wrong
-                //starTrekGameDao.insertScore(scoreHistory);
+                int userId = getIntent().getIntExtra("userId", -1);
+                ScoreHistory scoreHistory = new ScoreHistory("2020-12-03", "Yes", score, userId);
+                scoreHistory.setUserId(userId);
+
+                User user = starTrekGameDao.getUserId(userId);
+                if (user != null) {
+                    starTrekGameDao.insertScore(scoreHistory);
+                } else {
+                    Log.d("TriviaGameActivity", "User with ID " + userId + " not found.");
+                }
+//                starTrekGameDao.insertScore(scoreHistory);
 
                 navigateToResultActivity();
             }
