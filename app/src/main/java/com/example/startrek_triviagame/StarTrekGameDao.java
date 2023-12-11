@@ -1,5 +1,7 @@
 package com.example.startrek_triviagame;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;

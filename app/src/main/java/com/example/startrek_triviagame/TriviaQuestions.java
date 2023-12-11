@@ -131,22 +131,18 @@ public class TriviaQuestions {
         this.triviaAnswers = triviaAnswers;
     }
 
-    public int getTriviaAnswer(int j) {
+    public String getTriviaAnswer(int j) {
         int triviaAnswer = 0;
         switch (j) {
             case 0:
-                triviaAnswer = 1;
-                break;
+                return answerOne;
             case 1:
-                triviaAnswer = 2;
-                break;
+                return answerTwo;
             case 2:
-                triviaAnswer = 3;
-                break;
+                return answerThree;
             case 3:
-                triviaAnswer = 4;
-                break;
+                return answerFour;
         }
-        return triviaAnswer;
+        return "";
     }
 }
