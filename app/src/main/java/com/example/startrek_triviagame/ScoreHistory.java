@@ -6,6 +6,10 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 /**
  * This file represents the ScoreHistory table.
  *
@@ -28,6 +32,7 @@ public class ScoreHistory {
     @ColumnInfo(name = "EffectiveDate")
     private String effectiveDate;
 
+    // I don't think I need this, remove when refactoring
     @NonNull
     @ColumnInfo(name = "IsCorrectAnswer")
     private String isCorrectAnswer;
@@ -84,5 +89,17 @@ public class ScoreHistory {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getDate() {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            Date parsedDate = dateFormat.parse(effectiveDate);
+            SimpleDateFormat outputFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault());
+            return outputFormat.format(parsedDate);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return effectiveDate;
+        }
     }
 }

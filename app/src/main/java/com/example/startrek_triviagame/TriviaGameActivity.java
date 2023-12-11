@@ -11,8 +11,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class TriviaGameActivity extends AppCompatActivity {
 
@@ -60,9 +63,12 @@ public class TriviaGameActivity extends AppCompatActivity {
                         userScore++;
                     }
                 }
+
+                String currentDate = getCurrentDate();
+
                 String score = String.valueOf(userScore);
                 int userId = getIntent().getIntExtra("userId", -1);
-                ScoreHistory scoreHistory = new ScoreHistory("2020-12-03", "Yes", score, userId);
+                ScoreHistory scoreHistory = new ScoreHistory(currentDate, "Yes", score, userId);
                 scoreHistory.setUserId(userId);
 
                 User user = starTrekGameDao.getUserId(userId);
@@ -71,11 +77,16 @@ public class TriviaGameActivity extends AppCompatActivity {
                 } else {
                     Log.d("TriviaGameActivity", "User with ID " + userId + " not found.");
                 }
-//                starTrekGameDao.insertScore(scoreHistory);
 
                 navigateToResultActivity();
             }
         });
+    }
+
+    private String getCurrentDate() {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault());
+        return dateFormat.format(calendar.getTime());
     }
 
     private void displayTriviaQuestions() {

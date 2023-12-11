@@ -44,7 +44,9 @@ public class UserLandingPageActivity extends AppCompatActivity {
         viewScoresButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int userId = getIntent().getIntExtra("userId", -1);
 
+                startViewScoresActivity(userId);
             }
         });
 
@@ -66,6 +68,12 @@ public class UserLandingPageActivity extends AppCompatActivity {
 
     private void startTriviaGameActivity(int userId) {
         Intent intent = new Intent(UserLandingPageActivity.this, TriviaGameActivity.class);
+        intent.putExtra("userId", userId);
+        startActivity(intent);
+    }
+
+    private void startViewScoresActivity(int userId) {
+        Intent intent = new Intent(UserLandingPageActivity.this, ViewScoresActivity.class);
         intent.putExtra("userId", userId);
         startActivity(intent);
     }

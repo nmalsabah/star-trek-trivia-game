@@ -87,8 +87,8 @@ public interface StarTrekGameDao {
     @Delete
     void deleteScore(ScoreHistory scoreHistory);
 
-    @Query("SELECT * FROM ScoreHistory")
-    LiveData<List<ScoreHistory>> getAllScores();
+    @Query("SELECT * FROM ScoreHistory WHERE UserId = :userId")
+    LiveData<List<ScoreHistory>> getAllScores(int userId);
 
     @Query("SELECT * FROM ScoreHistory WHERE ScoreId = :scoreId")
     ScoreHistory getScoreId(int scoreId);

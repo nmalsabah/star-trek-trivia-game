@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/startrek_trivia_game"
-        android:textSize="30sp"
+        android:textSize="35sp"
         android:textStyle="bold"
         android:fontFamily="@font/starrenegades_jr9va"/>
 
@@ -25,7 +25,8 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="@string/login"
-        android:textSize="28sp"
+        android:fontFamily="@font/starrenegades_jr9va"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <EditText
@@ -47,12 +48,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/loginButton"
-        android:textSize="18sp" />
+        android:fontFamily="@font/starrenegades_jr9va"
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/signUpButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sign_up"
-        android:textSize="18sp" />
+        android:fontFamily="@font/starrenegades_jr9va"
+        android:textSize="25sp" />
 </LinearLayout>

@@ -14,7 +14,8 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="@string/sign_up"
-        android:textSize="28sp"
+        android:fontFamily="@font/starrenegades_jr9va"
+        android:textSize="35sp"
         android:textStyle="bold" />
 
     <EditText
@@ -36,12 +37,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/create_account"
-        android:textSize="18sp" />
+        android:fontFamily="@font/starrenegades_jr9va"
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/cancelButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/cancel"
-        android:textSize="18sp" />
+        android:fontFamily="@font/starrenegades_jr9va"
+        android:textSize="25sp" />
 </LinearLayout>
