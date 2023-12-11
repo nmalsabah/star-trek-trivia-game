@@ -1,7 +1,5 @@
 package com.example.startrek_triviagame;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -9,7 +7,6 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
 /**

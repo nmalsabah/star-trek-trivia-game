@@ -1,10 +1,6 @@
 package com.example.startrek_triviagame;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,9 +11,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-//    public static final int NEW_GAME_ACTIVITY_REQUEST_CODE = 1;
-//    private StarTrekGameViewModel viewModel;
-//    private StarTrekGameListAdapter adapter;
     private StarTrekGameDao starTrekGameDao;
     private SharedPreferences preferences;
     private int userId;
