@@ -55,4 +55,16 @@
     <string name="refresh">Refresh</string>
     <string name="admin_tasks_page">Admin Tasks</string>
     <string name="select_user">selectUser</string>
+    <string name="add_users">Add Users</string>
+    <string name="remove">Remove</string>
+    <string name="view_users">View Users</string>
+    <string name="remove_users">Remove Users</string>
+    <string name="new_username">New Username</string>
+    <string name="new_password">New Password</string>
+    <string name="add_user">Add User</string>
+    <string name="update_users">Update Users</string>
+    <string name="update_username">Update Username</string>
+    <string name="update_password">Update Password</string>
+    <string name="update_user">Update User</string>
+    <string name="exitAdminTasks">Exit</string>
 </resources>

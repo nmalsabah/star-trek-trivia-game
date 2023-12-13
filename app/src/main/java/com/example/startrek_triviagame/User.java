@@ -29,6 +29,9 @@ public class User {
     @ColumnInfo(name = "IsAdmin")
     private boolean isAdmin;
 
+    public User() {
+    }
+
     public User(@NonNull String userName,@NonNull String password, boolean isAdmin) {
         this.userName = userName;
         this.password = password;
@@ -67,5 +70,16 @@ public class User {
 
     public void setIsAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", isAdmin=" + isAdmin +
+                '}';
     }
 }

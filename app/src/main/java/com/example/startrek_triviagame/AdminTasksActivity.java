@@ -1,6 +1,7 @@
 package com.example.startrek_triviagame;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -9,14 +10,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import java.util.ArrayList;
 import java.util.List;
-
-// NEED TO DO LEFT FOR ADMIN TASKS: UPDATE AND REMOVE USERS DO NOT WORK.
-// NOT UPDATING IN THE LIST AND NOT UPDATING IN THE DATABASE.
-// NEED TO PUT AN EXIT BUTTON ON THE ADMIN TASKS PAGE.
-// NEED TO MAKE THE PAGE SCROLLING IN XML, RUNNING OUT OF ROOM.
 
 public class AdminTasksActivity extends AppCompatActivity {
     private Spinner viewUsersSpinner;
@@ -29,13 +27,18 @@ public class AdminTasksActivity extends AppCompatActivity {
     private Button removeUserButton;
     private Button addUserButton;
     private Button updateUserButton;
+    private Button exitAdminTasksButton;
 
     StarTrekGameDao starTrekGameDao;
+
+    private AdminTasksViewModel adminTasksViewModel;
 
    @Override
     protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
          setContentView(R.layout.activity_admin_tasks);
+
+         adminTasksViewModel = new ViewModelProvider(this).get(AdminTasksViewModel.class);
 
          viewUsersSpinner = findViewById(R.id.viewUsersSpinner);
          removeUserSpinner = findViewById(R.id.removeUserSpinner);
@@ -47,11 +50,15 @@ public class AdminTasksActivity extends AppCompatActivity {
          removeUserButton = findViewById(R.id.removeUserButton);
          addUserButton = findViewById(R.id.addUserButton);
          updateUserButton = findViewById(R.id.updateUserButton);
+         exitAdminTasksButton = findViewById(R.id.exitButton);
 
-         starTrekGameDao = StarTrekGameDatabase.getDatabase(getApplicationContext()).starTrekGameDao();
-
-         List<User> users = starTrekGameDao.getAllUsers();
-         updateSpinners(users);
+         adminTasksViewModel.getAllUsers().observe(this, new Observer<List<User>>() {
+             @Override
+             public void onChanged(List<User> users) {
+                 Log.d("AdminTasksActivity", "User list: " + users.toString());
+                 updateSpinners(users);
+             }
+         });
 
          removeUserButton.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -73,9 +80,16 @@ public class AdminTasksActivity extends AppCompatActivity {
                  updateUser(v);
              }
          });
+
+         exitAdminTasksButton.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 exitAdminTasks();
+             }
+         });
     }
 
-    private void updateSpinners(List<User> users) {
+    void updateSpinners(List<User> users) {
        List<String> userNames = new ArrayList<>();
        for (User user : users) {
            userNames.add(user.getUserName());
@@ -90,10 +104,12 @@ public class AdminTasksActivity extends AppCompatActivity {
     }
 
     public void removeUser(View view) {
+       Log.d("AdminTasksActivity", "removeUser method called");
+
         String selectedUser = removeUserSpinner.getSelectedItem().toString();
 
         User removeUser = new User(selectedUser, "", false);
-        starTrekGameDao.deleteUser(removeUser);
+        adminTasksViewModel.deleteUser(removeUser);
 
         Toast.makeText(this, selectedUser + " Removed Successfully!", Toast.LENGTH_SHORT).show();
     }
@@ -108,10 +124,7 @@ public class AdminTasksActivity extends AppCompatActivity {
        }
 
        User newUser = new User(newUsername, newPassword, false);
-       starTrekGameDao.insertUser(newUser);
-
-       List<User> users = starTrekGameDao.getAllUsers();
-       updateSpinners(users);
+       adminTasksViewModel.insertUser(newUser);
 
        Toast.makeText(this, newUsername + " Added Successfully!", Toast.LENGTH_SHORT).show();
    }
@@ -125,14 +138,20 @@ public class AdminTasksActivity extends AppCompatActivity {
            return;
        }
 
-       User updateUser = new User(updateUsername, updatePassword, false);
-       updateUser.setUserName(updateUsername);
-       updateUser.setPassword(updatePassword);
-       starTrekGameDao.updateUser(updateUser);
+       User updateUser = adminTasksViewModel.getUserName(updateUsername);
 
-       List<User> users = starTrekGameDao.getAllUsers();
-       updateSpinners(users);
+         if (updateUser != null) {
+              updateUser.setUserName(updateUsername);
+              updateUser.setPassword(updatePassword);
+              adminTasksViewModel.updateUser(updateUser);
 
-       Toast.makeText(this, updateUsername + " Updated Successfully!", Toast.LENGTH_SHORT).show();
+              Toast.makeText(this, updateUsername + " Updated Successfully!", Toast.LENGTH_SHORT).show();
+            } else {
+              Toast.makeText(this, updateUsername + " Not Found!", Toast.LENGTH_SHORT).show();
+            }
    }
+
+    public void exitAdminTasks() {
+         finish();
+    }
 }
