@@ -1,11 +1,9 @@
 package com.example.startrek_triviagame;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
@@ -28,16 +26,7 @@ public class AdminTasksViewModel extends AndroidViewModel {
         starTrekGameDao.insertUser(user);
     }
 
-    public void updateUser(User user) {
-        starTrekGameDao.updateUser(user);
-    }
-
     public void deleteUser(User user) {
-        Log.d("AdminTasksViewModel", "User to delete: " + user.getUserName());
         starTrekGameDao.deleteUser(user);
-    }
-
-    public User getUserName(String userName) {
-        return starTrekGameDao.getUserName(userName);
     }
 }

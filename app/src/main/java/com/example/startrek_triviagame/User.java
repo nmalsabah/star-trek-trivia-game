@@ -32,7 +32,8 @@ public class User {
     public User() {
     }
 
-    public User(@NonNull String userName,@NonNull String password, boolean isAdmin) {
+    public User(int userId, @NonNull String userName,@NonNull String password, boolean isAdmin) {
+        this.userId = userId;
         this.userName = userName;
         this.password = password;
         this.isAdmin = isAdmin;
@@ -70,16 +71,5 @@ public class User {
 
     public void setIsAdmin(boolean admin) {
         isAdmin = admin;
-    }
-
-    @NonNull
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", isAdmin=" + isAdmin +
-                '}';
     }
 }

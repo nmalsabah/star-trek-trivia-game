@@ -26,8 +26,6 @@ public abstract class StarTrekGameDatabase extends RoomDatabase {
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-
-
     public static StarTrekGameDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (StarTrekGameDatabase.class) {
@@ -41,22 +39,4 @@ public abstract class StarTrekGameDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
-
-//    public static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
-//        @Override
-//        public void onCreate(@NonNull SupportSQLiteDatabase db) {
-//            super.onCreate(db);
-//
-//            // If you want to keep data through app restarts,
-//            // comment out the following block
-//            databaseWriteExecutor.execute(() -> {
-//                // Populate the database in the background.
-//                // If you want to start with more words, just add them.
-//                StarTrekGameDao dao = INSTANCE.starTrekGameDao();
-//
-//                User user = new User("admin", "admin", true);
-//                dao.insertUser(user);
-//            });
-//        }
-//    };
 }

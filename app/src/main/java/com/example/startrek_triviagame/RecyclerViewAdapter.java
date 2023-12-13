@@ -8,7 +8,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ScoreViewHolder>{
@@ -19,9 +18,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.scores = scores;
     }
 
-    public RecyclerViewAdapter() {
-        this.scores = new ArrayList<>();
-    }
+//    public RecyclerViewAdapter() {
+//        this.scores = new ArrayList<>();
+//    }
 
     public void updateData(List<ScoreHistory> scores) {
         this.scores = scores;

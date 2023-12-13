@@ -49,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(RegisterActivity.this, "User already exists", Toast.LENGTH_SHORT).show();
                     } else {
                         // Perform user registration and handle success/failure
-                        User newUser = new User(userName, password, false);
+                        User newUser = new User(0,userName, password, false);
                         starTrekGameDao.insertUser(newUser);
                         Toast.makeText(RegisterActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
                         finish(); // Finish the RegisterActivity and go back to LoginActivity
@@ -89,4 +89,3 @@ public class RegisterActivity extends AppCompatActivity {
         return new Intent(context, RegisterActivity.class);
     }
 }
-

@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences preferences;
     private int userId;
     private boolean isAdmin;
-    private String triviaQuestions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,14 +59,12 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        //List<User> users = starTrekGameDao.getAllUsers();
-
         starTrekGameDao.getAllUsers().observe(this, new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
                 if (users.size() <= 0) {
-                    User testUser = new User("testuser1", "testuser1", false);
-                    User adminUser = new User("admin2", "admin2", true);
+                    User testUser = new User(0, "testuser1", "testuser1", false);
+                    User adminUser = new User(0,"admin2", "admin2", true);
                     starTrekGameDao.insertUser(testUser);
                     starTrekGameDao.insertUser(adminUser);
                 }
@@ -75,10 +72,3 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-
-//        if (users.size() <= 0) {
-//            User testUser = new User("testuser1", "testuser1", false);
-//            User adminUser = new User("admin2", "admin2", true);
-//            starTrekGameDao.insertUser(testUser);
-//            starTrekGameDao.insertUser(adminUser);
-//        }

@@ -18,7 +18,6 @@ public class ViewScoresActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerViewAdapter recyclerViewAdapter;
     private Button exitButton;
-    private Button refreshButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

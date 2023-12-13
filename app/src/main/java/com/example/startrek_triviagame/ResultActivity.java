@@ -3,7 +3,6 @@ package com.example.startrek_triviagame;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -50,7 +49,7 @@ public class ResultActivity extends AppCompatActivity {
             String username = user.getUserName();
 
             if (isAdmin) {
-                launchAdminLandingPageActivity(username);
+                launchAdminLandingPageActivity(userId, username);
             } else {
                 launchUserLandingPageActivity(userId, username);
             }
@@ -71,8 +70,9 @@ public class ResultActivity extends AppCompatActivity {
         finish();
     }
 
-    private void launchAdminLandingPageActivity(String username) {
+    private void launchAdminLandingPageActivity(int userId, String username) {
         Intent intent = new Intent(this, AdminLandingPageActivity.class);
+        intent.putExtra("userId", userId);
         intent.putExtra("username", username);
         startActivity(intent);
         finish();
