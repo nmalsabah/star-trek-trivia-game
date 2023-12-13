@@ -53,7 +53,8 @@ public class AdminLandingPageActivity extends AppCompatActivity {
         adminTasksButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                int userId = getIntent().getIntExtra("userId", -1);
+                startAdminTasksActivity(userId);
             }
         });
 
@@ -80,6 +81,12 @@ public class AdminLandingPageActivity extends AppCompatActivity {
 
     private void startViewScoresActivity(int userId) {
         Intent intent = new Intent(AdminLandingPageActivity.this, ViewScoresActivity.class);
+        intent.putExtra("userId", userId);
+        startActivity(intent);
+    }
+
+    private void startAdminTasksActivity(int userId) {
+        Intent intent = new Intent(AdminLandingPageActivity.this, AdminTasksActivity.class);
         intent.putExtra("userId", userId);
         startActivity(intent);
     }

@@ -29,7 +29,11 @@ public class User {
     @ColumnInfo(name = "IsAdmin")
     private boolean isAdmin;
 
-    public User(@NonNull String userName,@NonNull String password, boolean isAdmin) {
+    public User() {
+    }
+
+    public User(int userId, @NonNull String userName,@NonNull String password, boolean isAdmin) {
+        this.userId = userId;
         this.userName = userName;
         this.password = password;
         this.isAdmin = isAdmin;
