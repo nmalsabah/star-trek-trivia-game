@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--   <color name="buttonlabel">#FFFFFF</color>-->
-   <!-- <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+<!--<color name="buttonlabel">#FFFFFF</color>-->
+<!--    <color name="black">#FF000000</color>-->
+<!--    <color name="white">#FFFFFFFF</color>-->
 
-    <color name="starTrekPink">#CC99CC</color>
-    <color name="starTrekPink2">#CC6699</color>
-    <color name="starTrekOrange">#FF9933</color>
-    <color name="starTrekOrange2">#FF9900</color>
-    <color name="starTrekOrange3">#FF9966</color>
-    <color name="starTrekPurple">#9999FF</color>
-    <color name="starTrekPurple2">#9999CC</color>
-    <color name="starTrekYellow">#FFCC66</color>
-    <color name="starTrekYellow2">#FFCC99</color>
-    <color name="starTrekBurntRed">#CC6666</color> -->
+<!--    <color name="starTrekPink">#CC99CC</color>-->
+<!--    <color name="starTrekPink2">#CC6699</color>-->
+<!--    <color name="starTrekOrange">#FF9933</color>-->
+<!--    <color name="starTrekOrange2">#FF9900</color>-->
+<!--    <color name="starTrekOrange3">#FF9966</color>-->
+<!--    <color name="starTrekPurple">#9999FF</color>-->
+<!--    <color name="starTrekPurple2">#9999CC</color>-->
+<!--    <color name="starTrekYellow">#FFCC66</color>-->
+<!--    <color name="starTrekYellow2">#FFCC99</color>-->
+<!--    <color name="starTrekBurntRed">#CC6666</color>-->
 </resources>
