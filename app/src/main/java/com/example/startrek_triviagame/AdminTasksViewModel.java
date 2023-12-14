@@ -9,8 +9,8 @@ import java.util.List;
 
 public class AdminTasksViewModel extends AndroidViewModel {
 
-    private StarTrekGameDao starTrekGameDao;
-    private LiveData<List<User>> allUsers;
+    private final StarTrekGameDao starTrekGameDao;
+    private final LiveData<List<User>> allUsers;
 
     public AdminTasksViewModel(Application application) {
         super(application);

@@ -22,7 +22,8 @@ public class TriviaGameActivity extends AppCompatActivity {
     private List<TextView> triviaQuestionsTextViews;
     private List<RadioGroup> triviaQuestionsRadioGroups;
     private Button submitAnswersButton;
-    private int[] correctAnswers = {1, 2, 0, 3, 1};
+    private Button exitButton;
+    private final int[] correctAnswers = {1, 2, 0, 3, 1};
     private int userScore = 0;
     private StarTrekGameDao starTrekGameDao;
 
@@ -48,6 +49,7 @@ public class TriviaGameActivity extends AppCompatActivity {
         triviaQuestionsRadioGroups.add(findViewById(R.id.questionFiveRadioGroup));
 
         submitAnswersButton = findViewById(R.id.submitAnswersButton);
+        exitButton = findViewById(R.id.exitButton);
 
         TriviaQuestionLoader triviaQuestionLoader = new TriviaQuestionLoader(starTrekGameDao);
         triviaQuestionLoader.loadTriviaQuestions();
@@ -81,6 +83,13 @@ public class TriviaGameActivity extends AppCompatActivity {
                 navigateToResultActivity();
             }
         });
+
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exitTriviaGame();
+            }
+        });
     }
 
     private String getCurrentDate() {
@@ -106,6 +115,10 @@ public class TriviaGameActivity extends AppCompatActivity {
         intent.putExtra("userScore", userScore);
         intent.putExtra("username", getIntent().getStringExtra("username"));
         startActivity(intent);
+        finish();
+    }
+
+    public void exitTriviaGame() {
         finish();
     }
 }
