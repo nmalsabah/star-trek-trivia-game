@@ -18,10 +18,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.scores = scores;
     }
 
-//    public RecyclerViewAdapter() {
-//        this.scores = new ArrayList<>();
-//    }
-
     public void updateData(List<ScoreHistory> scores) {
         this.scores = scores;
         notifyDataSetChanged();
@@ -47,8 +43,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public static class ScoreViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView textViewScoreDate;
-        private TextView textViewScoreValue;
+        private final TextView textViewScoreDate;
+        private final TextView textViewScoreValue;
 
         public ScoreViewHolder(@NonNull View itemView) {
             super(itemView);
