@@ -1,36 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/stars_background">
 
     <TextView
         android:id="@+id/scoreHistoryTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/starrenegades_jr9va"
+        android:fontFamily="@font/tng_title"
         android:gravity="center"
         android:padding="20dp"
-        android:text="Score History"
-        android:textSize="40sp"
+        android:text="@string/score_history"
+        android:textColor="@color/starTrekOrange"
+        android:textSize="50sp"
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="472dp"
         android:layout_above="@+id/exitButton"
         android:layout_below="@+id/scoreHistoryTitle"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/edittext_outline"
+        android:paddingStart="8dp"
+        android:paddingTop="5dp" />
 
     <Button
         android:id="@+id/exitButton"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="40dp"
-        android:fontFamily="@font/starrenegades_jr9va"
+        android:backgroundTint="#3b1298"
+        android:fontFamily="@font/tng_title"
         android:gravity="center"
         android:text="@string/exit"
-        android:textSize="28sp" />
+        android:textSize="30sp"
+        android:textStyle="bold" />
 </RelativeLayout>
