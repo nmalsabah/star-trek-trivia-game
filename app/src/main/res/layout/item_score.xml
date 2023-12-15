@@ -11,14 +11,19 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/starrenegades_jr9va"
         android:text="Date: "
-        android:textSize="28sp" />
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewScoreValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/starrenegades_jr9va"
         android:text="Score: "
-        android:textSize="28sp" />
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold" />
 </LinearLayout>

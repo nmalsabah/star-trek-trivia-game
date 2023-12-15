@@ -67,4 +67,5 @@
     <string name="update_password">Update Password</string>
     <string name="update_user">Update User</string>
     <string name="exitAdminTasks">Exit</string>
+    <string name="score_history">Score history</string>
 </resources>

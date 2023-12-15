@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,11 +23,15 @@ public class ResultActivity extends AppCompatActivity {
         starTrekGameDao = StarTrekGameDatabase.getDatabase(getApplicationContext()).starTrekGameDao();
         preferences = this.getSharedPreferences("com.example.startrek_triviagame", MODE_PRIVATE);
 
+        ImageView imageView = findViewById(R.id.winOrLoseImageView);
+
         int userScore = getIntent().getIntExtra("userScore", 0);
         TextView resultTextView = findViewById(R.id.resultTextView);
         if (userScore >= 3) {
+            imageView.setImageResource(R.drawable.picard_win);
             resultTextView.setText("You Win!");
         } else {
+            imageView.setImageResource(R.drawable.picard_lose);
             resultTextView.setText("You Lose!");
         }
         TextView scoreTextView = findViewById(R.id.scoreTextView);
